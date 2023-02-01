@@ -1,14 +1,14 @@
-#include "s21_string.h"
+#include "sfleta_string.h"
 
 // 1
 // void *memchr(const void *str, int c, size_t n)
 // Выполняет поиск первого вхождения символа c (беззнаковый тип) в первых n
 // байтах строки, на которую указывает аргумент str.
-void *s21_memchr(const void *str, int c, s21_size_t n) {
-  void *res = s21_NULL;
+void *sfleta_memchr(const void *str, int c, sfleta_size_t n) {
+  void *res = sfleta_NULL;
   int breakFlag = 0;
 
-  for (s21_size_t i = 0; i < n && breakFlag == 0; i++) {
+  for (sfleta_size_t i = 0; i < n && breakFlag == 0; i++) {
     if (*((char *)str + i) == c) {
       res = (char *)str + i;
       breakFlag = 1;
@@ -20,7 +20,7 @@ void *s21_memchr(const void *str, int c, s21_size_t n) {
 // 2
 // int memcmp(const void *str1, const void *str2, size_t n)
 // Сравнивает первые n байтов str1 и str2.
-int s21_memcmp(const void *str1, const void *str2, s21_size_t n) {
+int sfleta_memcmp(const void *str1, const void *str2, sfleta_size_t n) {
   const char *p_Str1 = str1;
   const char *p_Str2 = str2;
   int res;
@@ -41,7 +41,7 @@ int s21_memcmp(const void *str1, const void *str2, s21_size_t n) {
 // 3
 // void *memcpy(void *dest, const void *src, size_t n)
 // Копирует n символов из src в dest.
-void *s21_memcpy(void *dest, const void *src, s21_size_t n) {
+void *sfleta_memcpy(void *dest, const void *src, sfleta_size_t n) {
   void *startDest = dest;
 
   char *ptrdest = dest;
@@ -60,10 +60,10 @@ void *s21_memcpy(void *dest, const void *src, s21_size_t n) {
 // 4
 // void *memmove(void *dest, const void *src, size_t n)
 // Еще одна функция для копирования n символов из str2 в str1.
-void *s21_memmove(void *dest, const void *src, s21_size_t n) {
+void *sfleta_memmove(void *dest, const void *src, sfleta_size_t n) {
   char *ptrdest = dest;
   const char *ptrsrc = src;
-  s21_size_t i;
+  sfleta_size_t i;
   for (i = 0; i < n; i++) {
     ptrdest[i] = ptrsrc[i];
   }
@@ -74,7 +74,7 @@ void *s21_memmove(void *dest, const void *src, s21_size_t n) {
 // void *memset(void *str, int c, size_t n)
 // Копирует символ c (беззнаковый тип) в первые n символов строки, на которую
 // указывает аргумент str.
-void *s21_memset(void *str, int c, s21_size_t n) {
+void *sfleta_memset(void *str, int c, sfleta_size_t n) {
   char *istr = str;
   int i = 0;
   while (n > 0) {
@@ -89,7 +89,7 @@ void *s21_memset(void *str, int c, s21_size_t n) {
 // char *strcat(char *dest, const char *src)
 // Добавляет строку, на которую указывает src, в конец строки, на которую
 // указывает dest.
-char *s21_strcat(char *dest, const char *src) {
+char *sfleta_strcat(char *dest, const char *src) {
   int i = 0;
   int j = 0;
   for (; dest[i] != '\0'; i++) {
@@ -106,14 +106,14 @@ char *s21_strcat(char *dest, const char *src) {
 // char *strncat(char *dest, const char *src, size_t n)
 // Добавляет строку, на которую указывает src, в конец строки, на которую
 // указывает dest, длиной до n символов.
-char *s21_strncat(char *dest, const char *src, s21_size_t n) {
+char *sfleta_strncat(char *dest, const char *src, sfleta_size_t n) {
   char *p_dest_start = dest;
 
   while (*dest != '\0') {
     dest++;
   }
 
-  s21_size_t i = 0;
+  sfleta_size_t i = 0;
   while (*src != '\0' && i < n) {
     *dest = *src;
     dest++, src++;
@@ -130,13 +130,13 @@ char *s21_strncat(char *dest, const char *src, s21_size_t n) {
 // char *strchr(const char *str, int c)
 // Выполняет поиск первого вхождения символа c (беззнаковый тип) в строке, на
 // которую указывает аргумент str.
-char *s21_strchr(const char *str, int ch) {
+char *sfleta_strchr(const char *str, int ch) {
   char *res;
   int exitFlag = 0;
 
   for (; *str != (char)ch && exitFlag == 0; str++) {
     if (*str == '\0') {
-      res = s21_NULL;
+      res = sfleta_NULL;
       exitFlag = 1;
     }
   }
@@ -152,7 +152,7 @@ char *s21_strchr(const char *str, int ch) {
 // int strcmp(const char *str1, const char *str2)
 // Сравнивает строку, на которую указывает str1, со строкой, на которую
 // указывает str2.
-int s21_strcmp(const char *str1, const char *str2) {
+int sfleta_strcmp(const char *str1, const char *str2) {
   while (*str1 != '\0' && *str2 != '\0' && *str1 == *str2) {
     str1++;
     str2++;
@@ -165,13 +165,13 @@ int s21_strcmp(const char *str1, const char *str2) {
 // int strncmp(const char *str1, const char *str2, size_t n)
 // Сравнивает не более первых n байтов str1 и str2.
 
-int s21_strncmp(const char *str1, const char *str2, s21_size_t n) {
+int sfleta_strncmp(const char *str1, const char *str2, sfleta_size_t n) {
   int res;
   int exitFlag = 0;
 
   char ch1 = '\0';
   char ch2 = '\0';
-  s21_size_t i = 0;
+  sfleta_size_t i = 0;
 
   while (i < n && n > 0 && exitFlag == 0) {
     ch1 = str1[i];
@@ -193,7 +193,7 @@ int s21_strncmp(const char *str1, const char *str2, s21_size_t n) {
 // 11
 // char *strcpy(char *dest, const char *src)
 // Копирует строку, на которую указывает src, в dest.
-char *s21_strcpy(char *dest, const char *src) {
+char *sfleta_strcpy(char *dest, const char *src) {
   char *dest_start = dest;
   *dest = *src;
 
@@ -208,10 +208,10 @@ char *s21_strcpy(char *dest, const char *src) {
 // 12
 // char *strncpy(char *dest, const char *src, size_t n)
 // Копирует до n символов из строки, на которую указывает src, в dest.
-char *s21_strncpy(char *dest, const char *src, s21_size_t n) {
+char *sfleta_strncpy(char *dest, const char *src, sfleta_size_t n) {
   char *p_dest_start = dest;
 
-  s21_size_t i = 0;
+  sfleta_size_t i = 0;
   while (i < n) {
     if (*src != '\0') {
       *dest = *src;
@@ -231,8 +231,8 @@ char *s21_strncpy(char *dest, const char *src, s21_size_t n) {
 // size_t strcspn(const char *str1, const char *str2)
 // Вычисляет длину начального сегмента str1, который полностью состоит из
 // символов, не входящих в str2.
-s21_size_t s21_strcspn(const char *str1, const char *str2) {
-  s21_size_t len = 0;
+sfleta_size_t sfleta_strcspn(const char *str1, const char *str2) {
+  sfleta_size_t len = 0;
   int exitFlag = 0;
 
   for (int i = 0; str1[i] != 0; i++, len++) {
@@ -254,8 +254,8 @@ s21_size_t s21_strcspn(const char *str1, const char *str2) {
 // Описания ошибок есть в оригинальной библиотеке. Проверка текущей ОС
 // осуществляется с помощью директив.
 
-char *s21_strerror(int errnum) {
-  const char *res = s21_NULL;
+char *sfleta_strerror(int errnum) {
+  const char *res = sfleta_NULL;
 
 #ifdef __linux__
   int COUNT = 133;
@@ -536,15 +536,15 @@ char *s21_strerror(int errnum) {
 #ifdef __linux__
     static char lastStr[32] = "Unknown error ";
     char numErr[50] = "";
-    s21_itoa(errnum, numErr);
-    s21_strncpy(lastStr + 14, "", s21_strlen(numErr));
-    res = s21_strcat(lastStr, numErr);
+    sfleta_itoa(errnum, numErr);
+    sfleta_strncpy(lastStr + 14, "", sfleta_strlen(numErr));
+    res = sfleta_strcat(lastStr, numErr);
 #elif (__APPLE__) || (__MACH__)
     static char lastStr[32] = "Unknown error: ";
     char numErr[50] = "";
-    s21_itoa(errnum, numErr);
-    s21_strncpy(lastStr + 15, "", s21_strlen(numErr));
-    res = s21_strcat(lastStr, numErr);
+    sfleta_itoa(errnum, numErr);
+    sfleta_strncpy(lastStr + 15, "", sfleta_strlen(numErr));
+    res = sfleta_strcat(lastStr, numErr);
 #endif
   }
 
@@ -554,7 +554,7 @@ char *s21_strerror(int errnum) {
 // 15
 // size_t strlen(const char *str)
 // Вычисляет длину строки str, не включая завершающий нулевой символ.
-s21_size_t s21_strlen(const char *str) {
+sfleta_size_t sfleta_strlen(const char *str) {
   int len = 0;
   while (*str != '\0') {
     str++;
@@ -568,8 +568,8 @@ s21_size_t s21_strlen(const char *str) {
 // char *strpbrk(const char *str1, const char *str2)
 // Находит первый символ в строке str1, который соответствует любому символу,
 // указанному в str2.
-char *s21_strpbrk(const char *str1, const char *str2) {
-  char *res = s21_NULL;
+char *sfleta_strpbrk(const char *str1, const char *str2) {
+  char *res = sfleta_NULL;
   int exitFlag = 0;
 
   for (int i = 0; str1[i] != 0 && exitFlag == 0; i++) {
@@ -589,8 +589,8 @@ char *s21_strpbrk(const char *str1, const char *str2) {
 // char *strrchr(const char *str, int c)
 // Выполняет поиск последнего вхождения символа c (беззнаковый тип) в строке, на
 // которую указывает аргумент str.
-char *s21_strrchr(const char *str, int c) {
-  const char *last_occurrence = s21_NULL;
+char *sfleta_strrchr(const char *str, int c) {
+  const char *last_occurrence = sfleta_NULL;
 
   while (*str != '\0') {
     if (*str == (char)c) {
@@ -610,8 +610,8 @@ char *s21_strrchr(const char *str, int c) {
 // size_t strspn(const char *str1, const char *str2)
 // Вычисляет длину начального сегмента str1, который полностью состоит из
 // символов str2.
-s21_size_t s21_strspn(const char *str1, const char *str2) {
-  s21_size_t res = 0;
+sfleta_size_t sfleta_strspn(const char *str1, const char *str2) {
+  sfleta_size_t res = 0;
   int exitFlag = 0;
 
   const char *ptr1;
@@ -639,8 +639,8 @@ s21_size_t s21_strspn(const char *str1, const char *str2) {
 // char *strstr(const char *haystack, const char *needle)
 // Находит первое вхождение всей строки needle (не включая завершающий нулевой
 // символ), которая появляется в строке haystack.
-char *s21_strstr(const char *haystack, const char *needle) {
-  char *res = s21_NULL;
+char *sfleta_strstr(const char *haystack, const char *needle) {
+  char *res = sfleta_NULL;
   int exitFlag = 0;
 
   if (*needle == '\0') {
@@ -668,7 +668,7 @@ char *s21_strstr(const char *haystack, const char *needle) {
 // 20
 // char *strtok(char *str, const char *delim)
 // Разбивает строку str на ряд токенов, разделенных delim.
-char *s21_strtok(char *s, const char *delim) {
+char *sfleta_strtok(char *s, const char *delim) {
   char *res = 0;
   int exitFlag = 0;
   static char *lasts;
@@ -679,10 +679,10 @@ char *s21_strtok(char *s, const char *delim) {
     if ((ch = *s++) == '\0') {
       exitFlag = 1;
     }
-  } while (s21_strchr(delim, ch) && exitFlag == 0);
+  } while (sfleta_strchr(delim, ch) && exitFlag == 0);
   if (exitFlag == 0) {
     --s;
-    lasts = s + s21_strcspn(s, delim);
+    lasts = s + sfleta_strcspn(s, delim);
     if (*lasts != 0) {
       *lasts++ = 0;
     }
@@ -698,8 +698,8 @@ char *s21_strtok(char *s, const char *delim) {
 // void *to_upper(const char *str)
 // Возвращает копию строки (str), преобразованной в верхний регистр.
 // В случае какой-либо ошибки следует вернуть значение NULL
-void *s21_to_upper(const char *str) {
-  char *buf = calloc(s21_strlen(str) + 1, sizeof(char));
+void *sfleta_to_upper(const char *str) {
+  char *buf = calloc(sfleta_strlen(str) + 1, sizeof(char));
   char *buf_t = buf;
   for (int i = 0; str[i] != '\0'; i++) {
     if ((str[i] > 96) && (str[i] < 123)) {
@@ -715,8 +715,8 @@ void *s21_to_upper(const char *str) {
 // void *to_lower(const char *str)
 // Возвращает копию строки (str), преобразованной в нижний регистр.
 // В случае какой-либо ошибки следует вернуть значение NULL
-void *s21_to_lower(const char *str) {
-  char *buf = calloc(s21_strlen(str) + 1, sizeof(char));
+void *sfleta_to_lower(const char *str) {
+  char *buf = calloc(sfleta_strlen(str) + 1, sizeof(char));
   char *buf_t = buf;
   for (int i = 0; str[i] != '\0'; i++) {
     if ((str[i] > 64) && (str[i] < 91)) {
@@ -733,22 +733,22 @@ void *s21_to_lower(const char *str) {
 // Возвращает новую строку, в которой указанная строка (str) вставлена
 // в указанную позицию (start_index) в данной строке (src).
 // В случае какой-либо ошибки следует вернуть значение NULL
-void *s21_insert(const char *src, const char *str, s21_size_t start_index) {
+void *sfleta_insert(const char *src, const char *str, sfleta_size_t start_index) {
   void *res = 0;
-  s21_size_t srcLen = s21_strlen(src);
-  s21_size_t strLen = s21_strlen(str);
-  s21_size_t maxLen = srcLen + strLen + 1;
+  sfleta_size_t srcLen = sfleta_strlen(src);
+  sfleta_size_t strLen = sfleta_strlen(str);
+  sfleta_size_t maxLen = srcLen + strLen + 1;
 
   if (((int)start_index < 0 || start_index >= maxLen ||
-       start_index > s21_strlen(src))) {
-    res = s21_NULL;
+       start_index > sfleta_strlen(src))) {
+    res = sfleta_NULL;
   } else {
-    char *buf = calloc(s21_strlen(str) + 1, sizeof(char));
+    char *buf = calloc(sfleta_strlen(str) + 1, sizeof(char));
     char *buf_t = buf;
 
-    s21_size_t j = 0;
-    s21_size_t i = 0;
-    s21_size_t len = s21_strlen(src);
+    sfleta_size_t j = 0;
+    sfleta_size_t i = 0;
+    sfleta_size_t len = sfleta_strlen(src);
 
     if (srcLen == 0) {
       for (j = 0; str[j] != 0; j++) {
@@ -779,28 +779,28 @@ void *s21_insert(const char *src, const char *str, s21_size_t start_index) {
 // Возвращает новую строку, в которой удаляются все начальные и конечные
 // вхождения набора заданных символов (trim_chars) из данной строки (src). В
 // случае какой-либо ошибки следует вернуть значение NULL
-void *s21_trim(const char *src, const char *trim_chars) {
+void *sfleta_trim(const char *src, const char *trim_chars) {
   void *res;
-  if (src == s21_NULL) {
-    res = s21_NULL;
+  if (src == sfleta_NULL) {
+    res = sfleta_NULL;
   } else {
     char whiteSpaceCharacters[8] = " \n\t";
 
-    if (trim_chars == s21_NULL) {
+    if (trim_chars == sfleta_NULL) {
       trim_chars = whiteSpaceCharacters;
     }
 
-    if (s21_strlen(trim_chars) == 0) {
-      s21_strcpy((char *)trim_chars, whiteSpaceCharacters);
+    if (sfleta_strlen(trim_chars) == 0) {
+      sfleta_strcpy((char *)trim_chars, whiteSpaceCharacters);
     }
 
-    char *src_t = (char* )calloc(s21_strlen(src) + 1, sizeof(char));
-    s21_strcpy(src_t, src);
+    char *src_t = (char* )calloc(sfleta_strlen(src) + 1, sizeof(char));
+    sfleta_strcpy(src_t, src);
 
     int p = 0;
     int j = 0;
     int l = 1;
-    int len = s21_strlen(src);
+    int len = sfleta_strlen(src);
     while (j < len) {
       for (int i = 0; trim_chars[i] != 0; i++) {
         if (src_t[p] == trim_chars[i]) {
@@ -815,8 +815,8 @@ void *s21_trim(const char *src, const char *trim_chars) {
     src_t[len - l + 1] = '\0';
     src_t = src_t + p;
 
-    char *str_temp = (char* )calloc(s21_strlen(src_t) + 1, sizeof(char));
-    s21_strcpy(str_temp, src_t);
+    char *str_temp = (char* )calloc(sfleta_strlen(src_t) + 1, sizeof(char));
+    sfleta_strcpy(str_temp, src_t);
     res = str_temp;
 
     free(src_t - p);
@@ -826,7 +826,7 @@ void *s21_trim(const char *src, const char *trim_chars) {
 }
 
 /////////// internal funcs ///////////
-char *s21_itoa(int n, char *mass) {
+char *sfleta_itoa(int n, char *mass) {
   int i = 0;
   int sign;
   if ((sign = n) < 0) n = -n;
@@ -839,16 +839,16 @@ char *s21_itoa(int n, char *mass) {
     mass[i] = '-';
     i++;
   }
-  s21_reverse(mass);
+  sfleta_reverse(mass);
   mass[i++] = '\0';
   return mass;
 }
 
-char *s21_reverse(char *str) {
+char *sfleta_reverse(char *str) {
     char tmp, *src, *dst;
     int len;
-    if (str != s21_NULL) {
-        len = s21_strlen(str);
+    if (str != sfleta_NULL) {
+        len = sfleta_strlen(str);
         if (len > 1) {
             src = str;
             dst = src + len - 1;
@@ -867,9 +867,9 @@ int signum(int VALUE) {
 }
 
 /////////// sprintf ///////////
-int s21_sprintf(char* str, const char* format, ...) {
+int sfleta_sprintf(char* str, const char* format, ...) {
     struct Param status = {-1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 0, '0', '0'};
-    s21_size_t len_i = 0;
+    sfleta_size_t len_i = 0;
     int i = 0;
     char *MainSymbol;
     char *TMP;
@@ -880,25 +880,25 @@ int s21_sprintf(char* str, const char* format, ...) {
         if (*MainSymbol == '%') {
             char Buff[200] = "";
             MainSymbol++;
-            s21_parsing(MainSymbol, &status);
+            sfleta_parsing(MainSymbol, &status);
             MainSymbol += status.itoa;
-            TMP = s21_ReadSpecific(&status, &factor, Buff);
-            len_i = s21_strlen(TMP);
-            s21_WriteFlags(str, &status, &i, &len_i);
-            s21_strcat(str, TMP);
-            s21_sprintfRigth(str, &status, &i, &len_i);
+            TMP = sfleta_ReadSpecific(&status, &factor, Buff);
+            len_i = sfleta_strlen(TMP);
+            sfleta_WriteFlags(str, &status, &i, &len_i);
+            sfleta_strcat(str, TMP);
+            sfleta_sprintfRigth(str, &status, &i, &len_i);
             status.flag = 1;
             i +=len_i - 1;
             va_end(factor);
         }
         if (status.flag == -1) str[i] = *MainSymbol;
-        s21_ClearFlag(&status);
+        sfleta_ClearFlag(&status);
     }
     return i;
 }
 
-void s21_parsing(char* symbol, struct Param* pars) {
-    s21_size_t lenPars = s21_strcspn(symbol, allsymbol);
+void sfleta_parsing(char* symbol, struct Param* pars) {
+    sfleta_size_t lenPars = sfleta_strcspn(symbol, allsymbol);
     pars -> itoa = lenPars;
     pars -> MOD = *(symbol+lenPars);
     int width_pars = 0;
@@ -939,9 +939,9 @@ void s21_parsing(char* symbol, struct Param* pars) {
                     break;
         }
         char BUF[100] = "";
-        s21_size_t range = 0;
+        sfleta_size_t range = 0;
         if ((*symbol > 0 + '0') && (*symbol <= 9 + '0')) {
-            range = s21_strlen(s21_ditoa(atoi(symbol), BUF));
+            range = sfleta_strlen(sfleta_ditoa(atoi(symbol), BUF));
             H = atoi(symbol);
             if (pars -> flag4 < 0) {
                 pars -> width = H;
@@ -964,7 +964,7 @@ void s21_parsing(char* symbol, struct Param* pars) {
         }
 }
 
-void* s21_ReadSpecific(struct Param* spec_f, va_list* argc, char* str) {
+void* sfleta_ReadSpecific(struct Param* spec_f, va_list* argc, char* str) {
     signed long long int REZ_I = 0;
     unsigned long long int G = 0;
     long double REZ_D = 0;
@@ -977,7 +977,7 @@ void* s21_ReadSpecific(struct Param* spec_f, va_list* argc, char* str) {
                 spec_f -> plus = 1;
                 REZ_I *= -1;
             }
-            str = s21_ditoa(REZ_I, str);
+            str = sfleta_ditoa(REZ_I, str);
             break;
         case 'd':
             REZ_I = va_arg(*argc, signed long long int);
@@ -986,13 +986,13 @@ void* s21_ReadSpecific(struct Param* spec_f, va_list* argc, char* str) {
                 spec_f -> plus = 1;
                 REZ_I *= -1;
             }
-            s21_ditoa(REZ_I, str);
+            sfleta_ditoa(REZ_I, str);
             break;
         case 'u':
             G = va_arg(*argc, unsigned long long int);
             G = spec_f->length == 'h' ? (unsigned short int)G : spec_f->length == 'l' ? G
                                                                                       : (unsigned int)G;
-             s21_ditoa(G, str);
+             sfleta_ditoa(G, str);
             break;
         case 's':
             if (spec_f -> length == 'l') {
@@ -1004,7 +1004,7 @@ void* s21_ReadSpecific(struct Param* spec_f, va_list* argc, char* str) {
               }
               break;
             }
-            str = spec_f -> accuracy > - 1 ? s21_strncpy(str, (char*)va_arg(*argc, int*),
+            str = spec_f -> accuracy > - 1 ? sfleta_strncpy(str, (char*)va_arg(*argc, int*),
                                          spec_f -> accuracy) : (char*)va_arg(*argc, int*);
             break;
         case 'f':
@@ -1020,9 +1020,9 @@ void* s21_ReadSpecific(struct Param* spec_f, va_list* argc, char* str) {
             }
             REZ_D += 0.5 * pow(10, -spec_f -> accuracy);
             if (spec_f -> accuracy == 0) {
-                s21_ditoa(REZ_D, str);
+                sfleta_ditoa(REZ_D, str);
             } else {
-                s21_FDot(str, spec_f, REZ_D);
+                sfleta_FDot(str, spec_f, REZ_D);
             }
             break;
         case'c':
@@ -1040,35 +1040,35 @@ void* s21_ReadSpecific(struct Param* spec_f, va_list* argc, char* str) {
     }
     return str;
 }
-char* s21_WriteFlags(char* BUF, struct Param* mass_f, int* index, s21_size_t* LEN) {
+char* sfleta_WriteFlags(char* BUF, struct Param* mass_f, int* index, sfleta_size_t* LEN) {
     switch (mass_f -> MOD) {
         case 'd':
-            BUF = s21_sprintf_d(BUF, mass_f, index, LEN);
+            BUF = sfleta_sprintf_d(BUF, mass_f, index, LEN);
             break;
         case 'i':
-            BUF = s21_sprintf_d(BUF, mass_f, index, LEN);
+            BUF = sfleta_sprintf_d(BUF, mass_f, index, LEN);
             break;
         case 'u':
-             s21_sprintf_s(BUF, mass_f, index, LEN);
+             sfleta_sprintf_s(BUF, mass_f, index, LEN);
             break;
         case 's':
-             s21_sprintf_s(BUF, mass_f, index, LEN);
+             sfleta_sprintf_s(BUF, mass_f, index, LEN);
             break;
         case 'c':
-             s21_sprintf_s(BUF, mass_f, index, LEN);
+             sfleta_sprintf_s(BUF, mass_f, index, LEN);
             break;
         case 'f':
-            BUF = s21_sprintf_d(BUF, mass_f, index, LEN);
+            BUF = sfleta_sprintf_d(BUF, mass_f, index, LEN);
             break;
         case '%':
-            s21_sprintf_s(BUF, mass_f, index, LEN);
+            sfleta_sprintf_s(BUF, mass_f, index, LEN);
             break;
     }
 
     return BUF;
 }
 
-void s21_sprintfRigth(char* BUF, struct Param* mass_f, int* index, s21_size_t* LEN) {
+void sfleta_sprintfRigth(char* BUF, struct Param* mass_f, int* index, sfleta_size_t* LEN) {
             while (mass_f -> width > (int) * LEN && mass_f -> flag1 > 0) {
                 BUF[*index + *LEN] = ' ';
                 *index +=1;
@@ -1076,7 +1076,7 @@ void s21_sprintfRigth(char* BUF, struct Param* mass_f, int* index, s21_size_t* L
             }
 }
 
-char* s21_sprintf_d(char* BUF, struct Param* mass_f, int* index, s21_size_t* LEN) {
+char* sfleta_sprintf_d(char* BUF, struct Param* mass_f, int* index, sfleta_size_t* LEN) {
     if ((mass_f -> flag3 > 0) && (mass_f -> flag2 < 0) && (mass_f -> plus != 1)) {
                 BUF[*index] = ' ';
                 *index +=1;
@@ -1108,7 +1108,7 @@ char* s21_sprintf_d(char* BUF, struct Param* mass_f, int* index, s21_size_t* LEN
     }
     return BUF;
 }
-void s21_ClearFlag(struct Param* flag_c) {
+void sfleta_ClearFlag(struct Param* flag_c) {
     flag_c -> ERROR = 0;
     flag_c -> flag1 = -1;
     flag_c -> flag2 = -1;
@@ -1122,27 +1122,27 @@ void s21_ClearFlag(struct Param* flag_c) {
     flag_c -> MOD = '\0';
     flag_c -> length = '\0';
 }
-char* s21_ditoa(unsigned long long int n, char *TMP) {
+char* sfleta_ditoa(unsigned long long int n, char *TMP) {
     int i = 0;
     do {
      TMP[i++] = n % 10 + '0';
     } while ((n /= 10) > 0.0);
-    s21_reverse(TMP);
+    sfleta_reverse(TMP);
     TMP[i++] = '\0';
     return TMP;
 }
 
-void* s21_FDot(char* TMP, struct Param* float_t, long double conv_f) {
-    s21_size_t len = 0;
+void* sfleta_FDot(char* TMP, struct Param* float_t, long double conv_f) {
+    sfleta_size_t len = 0;
     long double a = 0;
     long double b = 0;
     char BUF[100] = "";
     a = modfl(conv_f, &b);
-    s21_ditoa(b, TMP);
-    len = s21_strlen(TMP);
+    sfleta_ditoa(b, TMP);
+    len = sfleta_strlen(TMP);
     TMP[len] = '.';
     int c = 0;
-    s21_size_t m = 0;
+    sfleta_size_t m = 0;
     for (m = len + 1; a - (int)a > 0 && 0 < float_t -> accuracy; m++, float_t -> accuracy--) {
         c = 10 * a - (int)a * 10;
         if (c < 1) {
@@ -1154,13 +1154,13 @@ void* s21_FDot(char* TMP, struct Param* float_t, long double conv_f) {
         TMP[m] = '0';
     }
     if ((int)a != 0) {
-        s21_ditoa(a, BUF);
+        sfleta_ditoa(a, BUF);
     }
-    TMP = s21_strcat(TMP, BUF);
+    TMP = sfleta_strcat(TMP, BUF);
     return TMP;
 }
 
-void s21_sprintf_s(char* BUF, struct Param* mass_f, int* index, s21_size_t* LEN) {
+void sfleta_sprintf_s(char* BUF, struct Param* mass_f, int* index, sfleta_size_t* LEN) {
     if ((mass_f -> accuracy > mass_f -> width) && (mass_f -> MOD != 'u')) {
         mass_f -> accuracy = 0;
     }
