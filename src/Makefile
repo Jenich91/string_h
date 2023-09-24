@@ -8,6 +8,20 @@ default: all
 
 all: clean sfleta_string.a test  
 
+libname=sfleta_string
+static_lib:
+	gcc -c -g $(libname).c
+	ar -rcs $(libname).a *.o
+	ar -rcs lib$(libname).a *.o
+
+use_lib_main: static_lib
+	$(CC) main.c -L. -l$(libname) -o $(libname)
+	./test $(libname)
+
+use_lib_test:
+	$(CC) $(LDFLAGS) test.c -L. -l$(libname) -lcheck -pthread -lm -lsubunit -o test
+	./test
+
 test: sfleta_string.a
 ifeq ($(OS), Darwin)
 	$(CC) $(LDFLAGS) -o test test.c sfleta_string.a -L$(HOME)/homebrew/Cellar/check/0.15.2/lib/ -I$(HOME)/homebrew/include -lcheck
@@ -30,7 +44,8 @@ else
 endif
 
 clean:
-	rm -rf *.a *.o *.out *.dSYM *.gcno *.gcda *.cov *.info report *.cfg
+	rm -rf *.o *.out *.dSYM *.gcno *.gcda *.cov *.info report *.cfg 
+	# rm -rf *.a test
 
 gcov_report: clean sfleta_string.a
 ifeq ($(OS), Darwin)
